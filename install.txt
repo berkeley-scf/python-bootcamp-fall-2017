@@ -1,0 +1,12 @@
+1) Run Python on any Mac in Evans 342, logging on to your SCF account.
+
+2) SSH to any SCF Linux machine and run Python from the command line. 
+
+3) Login to the SCF JupyterHub to run an IPython Notebook:
+https://jupyter.stat.berkeley.edu:8443
+and then login with your SCF username and password. 
+
+4) Install Anaconda Python on your laptop by following the instructions under item #2 here:
+https://github.com/dlab-berkeley/python-intensive/blob/master/Install.md
+
+5) Install the BCE Linux virtual machine on your laptop. Python comes installed on the virtual machine. See http://bce.berkeley.edu

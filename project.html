@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Python bootcamp project</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Python bootcamp project</h1>
+</div>
+<h1 id="background">Background</h1>
+<p>The file <strong>fetch_senator_tweets.py</strong> downloads tweets using the Python twitter package to interact with Twitter's API. You will only be able to run that code if you set up your own Twitter account and follow the instructions at the start of the file regarding filling in the authentication information (CONSUMER_KEY, CONSUMER_SECRET, etc.).</p>
+<p>I've already run the code and downloaded the data for you. The downloaded information on the senators' twitter accounts is in <em>senators-list.json</em>, while the downloaded tweets are in <em>timelines.json</em>. Note that there are only 200 tweets for each senator because of limits on how many tweets can be accessed in a given request. <em>timelines.json</em> is too big to put in the Github repository. You can find it at <a href="http://www.stat.berkeley.edu/~paciorek/transfer/timelines.json">http://www.stat.berkeley.edu/~paciorek/transfer/timelines.json</a>.</p>
+<h1 id="questions">Questions</h1>
+<ol style="list-style-type: decimal">
+<li><p>Load the <em>senators-list.json</em> and <em>timelines.json</em> files as objects called <em>senators</em> and <em>timelines</em>.</p></li>
+<li><p>What type of datastructure is <em>timelines</em>? How many timelines are there? What does each timeline correspond to?</p></li>
+<li><p>Make a list of the number of followers each senator has.</p></li>
+<li><p>What is the screen name of the senator with the largest number of followers.</p></li>
+<li><p>Make a list of lists where the outer list represents senators and the inner list contains each senator's tweets, and call it <em>tweets</em>.</p></li>
+<li><p>Write a function, called <em>remove_punct</em>, which takes a word and returns the word with all punctuation characters removed, except for those that occur within a word.</p></li>
+<li><p>Write a function that takes tweet and returns a cleaned up version of the tweet. Here is an example function to get you started:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">def</span> clean(tweet)<span class="kw">:</span>
+    <span class="kw">cleaned_words</span> = [word.lower() <span class="kw">for</span> <span class="kw">word</span> in tweet.split() <span class="kw">if</span>
+                 <span class="st">&#39;http&#39;</span> <span class="kw">not</span> in word and
+                 <span class="kw">word.isalpha</span>() <span class="kw">and</span>
+                 <span class="kw">word</span> != <span class="st">&#39;RT&#39;</span>]
+    <span class="kw">return</span> <span class="st">&#39; &#39;</span>.join(cleaned_words)
+
+<span class="kw">clean</span>(tweets[0][0])</code></pre>
+<p>Note that the function I've provided is a bit buggy - it has some problems with some tweets. If your goal is to convert the tweet into a discrete set of words, what is going wrong here? Fix up and extend the example function.</p></li>
+<li><p>Use the following file to create a list, called <em>stopwords</em>, that contains common english words. <a href="http://www.textfixer.com/resources/common-english-words.txt">http://www.textfixer.com/resources/common-english-words.txt</a> Make sure to pull the data into Python by writing Python code to download and suck the data into Python.</p></li>
+<li><p>Write a function, called <em>tokenize</em>, which takes a tweet, cleans it, and removes all punctuation and stopwords.</p></li>
+<li><p>Create a list of lists, tweets_content, using your <em>tokenize</em> function.</p></li>
+<li><p>Create a list, <em>tokens</em>, where each senator's tweets are made into a single string.</p></li>
+<li><p>) Create a Pandas dataFrame with the following columns: senator name or handle, party of the senator, and number of times a prominent politician is mentioned in each senator's tweets. You might count the number of 'Obama', 'Trump', or 'Clinton' references.</p>
+<p>You can use this to create the party column (1=Republican, 0=Democratic):</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">party</span> = np.array([1,0,0,1,1,1,0,0,0,1,0,0,1,1,1,1,0,0,0,0,1,0,0,0,1,1,1,1,0,0,0,0,1,0,1,0,1,1,1,0,1,0,1,0,1,1,0,1,0,1,0,1,0,1,0,0,0,0,1,1,0,1,1,1,0,1,1,1,0,0,1,0,0,0,1,0,0,0,1,1,1,1,0,1,1,1,0,1,1,1,0,1,0,1,1,0,1,0,1,1])</code></pre></li>
+<li><p>) Use a Poisson GLM to assess the relationship between party and number of Obama/Trump/Clinton mentions. Does one party tend to mention Obama/Trump/Clinton more in their tweets?</p>
+<p>Here's some syntax to help you get started:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">import</span> statsmodels.api as sm
+<span class="kw">model</span> = sm.GLM(endog = .,  exog = ., family = sm.families.Poisson())
+<span class="kw">model.fit</span>()</code></pre>
+<p>Does the statistical result make sense in light of the number of total mentions of Obama/Trump/Clinton by Republicans and the number of total mentions by Democrats?</p></li>
+<li><p>) Use <em>matplotlib</em> to make histograms of the number of Obama mentions by senator, stratified by party.</p>
+<p>Is this consistent with the results of your statistical analysis?</p></li>
+<li><p>) Please fill out the feedback form for the bootcamp: <a href="https://docs.google.com/forms/d/e/1FAIpQLSepReFeUy-emnMOGCACIQlYCNbfVsfEID4iCTWGeLtOVMWZYA/viewform">https://docs.google.com/forms/d/e/1FAIpQLSepReFeUy-emnMOGCACIQlYCNbfVsfEID4iCTWGeLtOVMWZYA/viewform</a>.</p></li>
+</ol>
+</body>
+</html>
