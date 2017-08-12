@@ -7,25 +7,43 @@
   <title>Introduction to Python</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
   </style>
-  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
 <body>
 <div id="header">
@@ -34,209 +52,207 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h1 id="background">Background</h1>
 <h2 id="etherpad">Etherpad</h2>
 <p>We'll use a shared online document hosted at etherpad.net to share code snippets, problem solutions, syntax, etc.</p>
-<p>Please open <a href="https://etherpad.net/p/python-bootcamp-2017">https://etherpad.net/p/python-bootcamp-2017</a> in a browser window.</p>
+<p>Please open <a href="https://etherpad.net/p/python-bootcamp-fall-2017" class="uri">https://etherpad.net/p/python-bootcamp-fall-2017</a> in a browser window.</p>
 <h2 id="preparation">Preparation</h2>
 <p>This tutorial assumes you are familiar with R (or possibly another high-level language such as MATLAB).</p>
 <p>You will also need Python and IPython installed on your computer, as well as a few core additional packages, including re, numpy, scipy, matplotlib, and pandas.</p>
 <p>Packages can generally be installed via pip, or via conda if you have the anaconda or miniconda installation of Python.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pip</span> install ipython
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">## using pip</span>
+<span class="kw">pip</span> install ipython
 <span class="kw">pip</span> install numpy
 <span class="co"># or to install within your home directory if you do not have admin control of the computer</span>
 <span class="kw">pip</span> install --user ipython
-<span class="kw">pip</span> install --user numpy</code></pre>
+<span class="kw">pip</span> install --user numpy
+
+<span class="co">## using conda</span>
+<span class="kw">conda</span> list
+<span class="kw">conda</span> install ipython</code></pre></div>
 <p>For additional help with installation, please see the <a href="http://ipython.org/install.html">IPython installation page</a>.</p>
 <h2 id="resources">Resources</h2>
 <p>Useful written references and tutorials:</p>
 <ul>
-<li><a href="https://docs.python.org/2/index.html">https://docs.python.org/2/index.html</a></li>
-<li><a href="https://docs.python.org/2/library/index.html">https://docs.python.org/2/library/index.html</a></li>
-<li><a href="https://scipy-lectures.github.io/">https://scipy-lectures.github.io/</a></li>
-<li><a href="https://docs.python.org/3/howto/pyporting.html">https://docs.python.org/3/howto/pyporting.html</a></li>
+<li><a href="https://docs.python.org/2/index.html" class="uri">https://docs.python.org/2/index.html</a></li>
+<li><a href="https://docs.python.org/2/library/index.html" class="uri">https://docs.python.org/2/library/index.html</a></li>
+<li><a href="https://scipy-lectures.github.io/" class="uri">https://scipy-lectures.github.io/</a></li>
+<li><a href="https://docs.python.org/3/howto/pyporting.html" class="uri">https://docs.python.org/3/howto/pyporting.html</a></li>
 </ul>
 <p>Some introductory video lectures:</p>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=a_Z_6brm9ZQ">https://www.youtube.com/watch?v=a_Z_6brm9ZQ</a></li>
+<li><a href="https://www.youtube.com/watch?v=a_Z_6brm9ZQ" class="uri">https://www.youtube.com/watch?v=a_Z_6brm9ZQ</a></li>
 </ul>
-<p>While working through this tutorial, you should type the example code snippets at an interactive Python terminal. I recommend using either the IPython shell or the IPython notebook. To start an IPython shell, type the following at a BASH prompt:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">ipython</span></code></pre>
+<p>While working through this tutorial, you should type the example code snippets at an interactive Python terminal. I recommend using either the IPython shell or the IPython notebook. To start an IPython shell, type the following at a bash prompt:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">ipython</span></code></pre></div>
 <p>To start an IPython notebook, type</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">jupyter</span> notebook</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">jupyter</span> notebook</code></pre></div>
 <h2 id="python-2-vs.-3">Python 2 vs. 3</h2>
 <p>Python 3 is a new version of Python, which is in some ways incompatible with Python 2. We will use Python 3, though most of the code here will also work in Python 2.</p>
 <p>If you want to write code that works in both, it's a good idea to make use of the <em>future</em> package:</p>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="ch">from</span> __future__ <span class="ch">import</span> (absolute_import,
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> __future__ <span class="im">import</span> (absolute_import,
                         division,
                         print_function,
-                        unicode_literals)</code></pre>
-<p>The idea is that by using this package and adding a few imports to the top of your Python modules you can write &quot;predominantly standard, idiomatic Python 3 code that then runs similarly on Python 2.6/2.7 and Python 3.3+.&quot;</p>
+                        unicode_literals)</code></pre></div>
+<p>The idea is that by using the future package and adding few imports, as above, to the top of your Python modules you can write &quot;predominantly standard, idiomatic Python 3 code that then runs similarly on Python 2.6/2.7 and Python 3.3+.&quot;</p>
 <h1 id="introduction">Introduction</h1>
 <h2 id="formatting-python-code">Formatting Python code</h2>
 <p>Unlike most languages, in Python indentation determines code blocks, including functions, loops, and if-else statements.</p>
 <p>The standard is one tab or 4 spaces, but you can use other spacing if it's consistent within a block of code.</p>
-<pre class="sourceCode python"><code class="sourceCode python">a = <span class="dv">3</span>
- a = <span class="dv">3</span>  <span class="co"># this will cause an IndentationError, at least in Python itself, if not IPython</span>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">a <span class="op">=</span> <span class="dv">3</span>
+ a <span class="op">=</span> <span class="dv">3</span>  <span class="co"># this will cause an IndentationError, at least in Python itself, if not IPython</span>
 
-<span class="kw">if</span> a&gt;=<span class="dv">4</span>:    
-    <span class="dt">print</span>(<span class="st">&#39;a is big&#39;</span>)
-    <span class="kw">if</span>(a == <span class="dv">4</span>):
-        <span class="dt">print</span>(<span class="st">&#39;a is 4&#39;</span>)
-<span class="kw">else</span>:
-    <span class="dt">print</span>(<span class="st">&#39;a is small&#39;</span>)
+<span class="cf">if</span> a<span class="op">&gt;=</span><span class="dv">4</span>:    
+    <span class="bu">print</span>(<span class="st">&#39;a is big&#39;</span>)
+    <span class="cf">if</span>(a <span class="op">==</span> <span class="dv">4</span>):
+        <span class="bu">print</span>(<span class="st">&#39;a is 4&#39;</span>)
+<span class="cf">else</span>:
+    <span class="bu">print</span>(<span class="st">&#39;a is small&#39;</span>)
 
-<span class="kw">if</span> a&gt;=<span class="dv">4</span>:    
-  <span class="dt">print</span>(<span class="st">&#39;a is big&#39;</span>)
-  <span class="kw">if</span>(a == <span class="dv">4</span>):
-        <span class="dt">print</span>(<span class="st">&#39;a is 4&#39;</span>)
-  <span class="kw">else</span>:
-        <span class="dt">print</span>(<span class="st">&#39;a is not 4&#39;</span>)</code></pre>
+<span class="cf">if</span> a<span class="op">&gt;=</span><span class="dv">4</span>:    
+  <span class="bu">print</span>(<span class="st">&#39;a is big&#39;</span>)
+  <span class="cf">if</span>(a <span class="op">==</span> <span class="dv">4</span>):
+        <span class="bu">print</span>(<span class="st">&#39;a is 4&#39;</span>)
+  <span class="cf">else</span>:
+        <span class="bu">print</span>(<span class="st">&#39;a is not 4&#39;</span>)</code></pre></div>
 <h2 id="objects">Objects</h2>
 <p>Everything is an object in Python. Roughly, this means that it can be tagged with a variable and passed as an argument to a function. Often it means that everything has <em>attributes</em> and <em>methods</em>.</p>
 <p>Certain objects in Python are mutable (e.g., lists, dictionaries), while other objects are immutable (e.g., tuples, strings, sets). Mutable means one can change parts of the object.</p>
 <p>Many objects can be composite (e.g., a list of dictionaries or a dictionary of lists, tuples, and strings).</p>
-<pre class="sourceCode python"><code class="sourceCode python">myList = [<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">&#39;foo&#39;</span>]
-myList[<span class="dv">1</span>] = <span class="fl">2.5</span>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">myList <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">&#39;foo&#39;</span>]
+myList[<span class="dv">1</span>] <span class="op">=</span> <span class="fl">2.5</span>
 myList
 
-myTuple = (<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">&#39;foo&#39;</span>)
-myTuple[<span class="dv">1</span>] = <span class="fl">2.5</span>
-myTuple</code></pre>
+myTuple <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">&#39;foo&#39;</span>)
+myTuple[<span class="dv">1</span>] <span class="op">=</span> <span class="fl">2.5</span>
+myTuple</code></pre></div>
 <h2 id="variables">Variables</h2>
 <p>As in R and other interpreted languages, variables are not their values in Python (think &quot;I am not my name, I am the person named XXX&quot;). You can think of variables as tags on objects. In particular, variables can be bound to an object of one type and then reassigned to an object of another type without error.</p>
-<pre class="sourceCode python"><code class="sourceCode python">a = <span class="st">&#39;foo&#39;</span>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">a <span class="op">=</span> <span class="st">&#39;foo&#39;</span>
 a
-a * <span class="dv">4</span>
-<span class="dt">len</span>(a)
+a <span class="op">*</span> <span class="dv">4</span>
+<span class="bu">len</span>(a)
 
-a = <span class="dv">3</span>
+a <span class="op">=</span> <span class="dv">3</span>
 a
-a*<span class="dv">4</span>
-<span class="dt">len</span>(a)</code></pre>
+a<span class="op">*</span><span class="dv">4</span>
+<span class="bu">len</span>(a)</code></pre></div>
 <h2 id="modules-files-packages-import">Modules, files, packages, import</h2>
 <p>While you will often explore things from an interactive Python prompt, you will save your code in files for reuse as well as to document what you’ve done. You can use Python code saved in a plain text file from a Python prompt or other files by importing it. Typically, this is done at the top of a file (if you are working at a prompt, you just need to import it before you want to use the functionality).</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cat</span> test.py</code></pre>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="kw">del</span>(a); <span class="kw">del</span>(hello)
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cat</span> test.py  <span class="co"># special IPython functionality to call the operating system</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">del</span>(a)<span class="op">;</span> <span class="kw">del</span>(hello)
 
-<span class="ch">import</span> test
+<span class="im">import</span> test
 
 test.hello()
 test.a
 
 hello()
-a</code></pre>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="ch">from</span> test <span class="ch">import</span> *
+a</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> test <span class="im">import</span> <span class="op">*</span>
 
 hello()
-a</code></pre>
+a</code></pre></div>
 <p>As in R, you can also load in additional supporting packages for extra functionality. Here are some examples of importing Python packages:</p>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="ch">import</span> math
-<span class="ch">from</span> math <span class="ch">import</span> cos
-<span class="ch">import</span> numpy <span class="ch">as</span> np
-<span class="ch">import</span> scipy <span class="ch">as</span> sp
-<span class="ch">import</span> matplotlib.pyplot <span class="ch">as</span> plt</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> math
+<span class="im">from</span> math <span class="im">import</span> cos
+<span class="im">import</span> numpy <span class="im">as</span> np
+<span class="im">import</span> scipy <span class="im">as</span> sp
+<span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</code></pre></div>
 <h2 id="style">Style</h2>
 <p>Adopting standard coding conventions is good practice.</p>
 <ul>
-<li><a href="https://www.python.org/dev/peps/pep-0008/">https://www.python.org/dev/peps/pep-0008/</a></li>
-<li><a href="https://docs.python.org/2/tutorial/controlflow.html#intermezzo-coding-style">https://docs.python.org/2/tutorial/controlflow.html#intermezzo-coding-style</a></li>
-<li><a href="https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt">https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt</a></li>
-<li><a href="http://matplotlib.org/devel/coding_guide.html">http://matplotlib.org/devel/coding_guide.html</a></li>
+<li><a href="https://www.python.org/dev/peps/pep-0008/" class="uri">https://www.python.org/dev/peps/pep-0008/</a></li>
+<li><a href="https://docs.python.org/2/tutorial/controlflow.html#intermezzo-coding-style" class="uri">https://docs.python.org/2/tutorial/controlflow.html#intermezzo-coding-style</a></li>
+<li><a href="https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt" class="uri">https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt</a></li>
+<li><a href="http://matplotlib.org/devel/coding_guide.html" class="uri">http://matplotlib.org/devel/coding_guide.html</a></li>
 </ul>
 <p>The first link above is the official &quot;Style Guide for Python Code&quot;, usually referred to as PEP8 (PEP is an acronym for Python Enhancement Proposal). There are a couple of potentially helpful tools for helping you conform to the standard. The <a href="https://pypi.python.org/pypi/pep8">pep8</a> package that provides a commandline tool to check your code against some of the PEP8 standard conventions. Similarly, <a href="https://pypi.python.org/pypi/autopep8">autopep8</a> provides a tool to automatically format your code so that it conforms to the PEP8 standards. I have used both a little and they seem to work fairly well.</p>
 <h2 id="documentation-and-getting-help">Documentation and getting help</h2>
 <p>The last two links above discuss the NumPy docstring standard. Let’s briefly see how you might benefit from NumPy docstrings in practice.</p>
-<pre class="sourceCode python"><code class="sourceCode python">In [<span class="dv">1</span>]: <span class="ch">import</span> numpy <span class="ch">as</span> np
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">In [<span class="dv">1</span>]: <span class="im">import</span> numpy <span class="im">as</span> np
 
 In [<span class="dv">2</span>]: np.ndim?
 Type:        function
-String form: &lt;function ndim at <span class="bn">0x7fcabd864938</span>&gt;
-File:        /usr/lib64/python2<span class="fl">.7</span>/site-packages/numpy/core/fromnumeric.py
+String form: <span class="op">&lt;</span>function ndim at <span class="bn">0x7fcabd864938</span><span class="op">&gt;</span>
+File:        <span class="op">/</span>usr<span class="op">/</span>lib64<span class="op">/</span>python2<span class="fl">.7</span><span class="op">/</span>site<span class="op">-</span>packages<span class="op">/</span>numpy<span class="op">/</span>core<span class="op">/</span>fromnumeric.py
 Definition:  np.ndim(a)
 Docstring:
 Return the number of dimensions of an array.
 
 Parameters
-----------
+<span class="op">----------</span>
 a : array_like
-    Input array.  If it is not already an ndarray, a conversion is
+    Input array.  If it <span class="op">is</span> <span class="op">not</span> already an ndarray, a conversion <span class="op">is</span>
     attempted.
 
 Returns
--------
-number_of_dimensions : <span class="dt">int</span>
-    The number of dimensions in `a`.  Scalars are zero-dimensional.
+<span class="op">-------</span>
+number_of_dimensions : <span class="bu">int</span>
+    The number of dimensions <span class="op">in</span> `a`.  Scalars are zero<span class="op">-</span>dimensional.
 
 See Also
---------
+<span class="op">--------</span>
 ndarray.ndim : equivalent method
 shape : dimensions of array
 ndarray.shape : dimensions of array
 
 Examples
---------
-&gt;&gt;&gt; np.ndim([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]])
+<span class="op">--------</span>
+<span class="op">&gt;&gt;&gt;</span> np.ndim([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]])
 <span class="dv">2</span>
-&gt;&gt;&gt; np.ndim(np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]]))
+<span class="op">&gt;&gt;&gt;</span> np.ndim(np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]]))
 <span class="dv">2</span>
-&gt;&gt;&gt; np.ndim(<span class="dv">1</span>)
-<span class="dv">0</span></code></pre>
+<span class="op">&gt;&gt;&gt;</span> np.ndim(<span class="dv">1</span>)
+<span class="dv">0</span></code></pre></div>
 <p>Docstrings are an important part of Python. A docstring is a character string that occurs as the first statement in a module, function, class, or method definition. Such a docstring becomes the <strong>doc</strong> special attribute of that object. All modules should normally have docstrings, and all functions and classes exported by a module should also have docstrings.</p>
 <p><strong>Exercises</strong></p>
 <ul>
 <li>What happens if you type <code>np.ndim??</code> (i.e., use two question marks)?</li>
-<li><p>What does <code>ndim()</code> do? How does it execute under the hood? Consider why the following uses of <em>ndim</em> both work.</p>
-<pre class="sourceCode python"><code class="sourceCode python">a = np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])
+<li><p>What does <code>np.ndim()</code> do? How does it execute under the hood? Consider why the following uses of <em>ndim</em> both work.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">a <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])
 a.ndim
-np.ndim(a)</code></pre>
+np.ndim(a)</code></pre></div>
 <p>Now explain why only one of these works.</p>
-<pre class="sourceCode python"><code class="sourceCode python">a = [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">a <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]
 a.ndim
-np.ndim(a)</code></pre></li>
+np.ndim(a)</code></pre></div></li>
 <li>Type <code>np.ndarray?</code> at an IPython prompt. Briefly skim the docstring. <code>ndarray</code> is the basic datastructure provided by NumPy. We will examine it in much more detail in the next chapter.</li>
 <li><p>Type <code>np.</code> followed by the <code>&lt;Tab&gt;</code> key at an IPython prompt. Choose two or three of the completions and use <code>?</code> to view their docstrings. In particular, pay attention to the examples provided near the end of the docstring and see whether you can figure out how you might use this functionality.</p></li>
 </ul>
 <h2 id="decoding-error-messages">Decoding error messages</h2>
 <p>Let's run the following code and try to tease out where the error is. The tricky part is that the error occurs within a function where the function comes from a module (separate code file).</p>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="ch">import</span> days
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> days
 
-days.print_friday_message()</code></pre>
+days.print_friday_message()</code></pre></div>
 <p>The list of function calls that led to the error is called a <em>traceback</em>. (Note that in R you can get similar output using <code>traceback()</code> after an error or setting <code>options(error = recover)</code> before an error.)</p>
 <h1 id="data-structures">Data Structures</h1>
 <p>Python has a number of basic data structure types that are widely used. There are both similarities and differences from basic data structures in R.</p>
 <ul>
-<li><a href="https://docs.python.org/2/library/stdtypes.html">https://docs.python.org/2/library/stdtypes.html</a></li>
-<li><a href="https://docs.python.org/2/tutorial/datastructures.html">https://docs.python.org/2/tutorial/datastructures.html</a></li>
-<li><a href="https://docs.python.org/2/reference/datamodel.html">https://docs.python.org/2/reference/datamodel.html</a></li>
+<li><a href="https://docs.python.org/2/library/stdtypes.html" class="uri">https://docs.python.org/2/library/stdtypes.html</a></li>
+<li><a href="https://docs.python.org/2/tutorial/datastructures.html" class="uri">https://docs.python.org/2/tutorial/datastructures.html</a></li>
+<li><a href="https://docs.python.org/2/reference/datamodel.html" class="uri">https://docs.python.org/2/reference/datamodel.html</a></li>
 </ul>
 <h2 id="numbers">Numbers</h2>
 <p>Python has integers, floats, and complex numbers with the usual operations.</p>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="dv">2</span>*<span class="dv">3</span>
-<span class="dv">2</span>/<span class="dv">3</span>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="dv">2</span><span class="op">*</span><span class="dv">3</span>
+<span class="dv">2</span><span class="op">/</span><span class="dv">3</span>
 
 <span class="co"># be careful - if you try `2/3` in Python 2, you&#39;ll get different behavior.</span>
 
-x = <span class="fl">1.1</span>
-<span class="dt">type</span>(x)
+x <span class="op">=</span> <span class="fl">1.1</span>
+<span class="bu">type</span>(x)
 
-x * <span class="dv">2</span>
-x ** <span class="dv">2</span>
+x <span class="op">*</span> <span class="dv">2</span>
+x <span class="op">**</span> <span class="dv">2</span>
 
-(<span class="dt">type</span>(<span class="dv">1</span>), <span class="dt">type</span>(<span class="fl">1.1</span>), <span class="dt">type</span>(<span class="dv">1</span>+2j))
-y = <span class="dv">1</span>+2j</code></pre>
-<p>Note that even these basic data structures behave like objects. We can use tab completion to see what methods are available for an object.</p>
-<pre class="sourceCode python"><code class="sourceCode python">x.
-<span class="co"># x.as_integer_ratio  x.hex               x.real</span>
-<span class="co"># x.conjugate         x.imag              </span>
-<span class="co"># x.fromhex           x.is_integer        </span>
-
-<span class="co"># Which of those are attributes (&#39;member data&#39;) and which are methods (&#39;member functions&#39;)?</span></code></pre>
+(<span class="bu">type</span>(<span class="dv">1</span>), <span class="bu">type</span>(<span class="fl">1.1</span>), <span class="bu">type</span>(<span class="dv">1</span><span class="op">+</span>2j))
+y <span class="op">=</span> <span class="dv">1</span><span class="op">+</span>2j</code></pre></div>
 <p>We can apply various functions to numbers, as expected.</p>
-<pre class="sourceCode python"><code class="sourceCode python">cos(<span class="dv">0</span>)
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">cos(<span class="dv">0</span>)
 
-<span class="ch">import</span> math
+<span class="im">import</span> math
 math.cos(<span class="dv">0</span>)
-math.cos(math.pi)</code></pre>
+math.cos(math.pi)</code></pre></div>
 <p>The <em>math</em> package in the standard library includes many additional numerical operations.</p>
-<pre class="sourceCode python"><code class="sourceCode python">math.</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">math.</code></pre></div>
 <pre><code>math.acos       math.degrees    math.fsum       math.pi
 math.acosh      math.e          math.gamma      math.pow
 math.asin       math.erf        math.hypot      math.radians
@@ -253,16 +269,25 @@ math.cosh       math.frexp      math.modf</code></pre>
 <li>Using the section on &quot;Built-in Types&quot; from the <a href="https://docs.python.org/2/library/index.html">official &quot;The Python Standard Library&quot; reference</a>, figure out how to compute:
 <ol style="list-style-type: decimal">
 <li>3 modulo 4,</li>
-<li><span class="math">\((\lceil \frac{3}{4} \rceil \times 4)^3\)</span>, and</li>
-<li><span class="math">\(\sqrt{-1}\)</span>.</li>
+<li><span class="math inline">\((\lceil \frac{3}{4} \rceil \times 4)^3\)</span>, and</li>
+<li><span class="math inline">\(\sqrt{-1}\)</span>.</li>
 </ol></li>
 <li>Is the result of <code>5/3 - 4/3 - 1/3</code> of the integer type? Is the mathematical value seen in Python an integer? Why is this the case?</li>
 <li><p>Here's a numerical puzzle. Why does the last computation not work, when the others do? And which of these computations don't work in R?</p>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="dv">100000</span>**<span class="dv">10</span>
-<span class="fl">100000.0</span>**<span class="dv">10</span>
-<span class="dv">100000</span>**<span class="dv">100</span>
-<span class="fl">100000.0</span>**<span class="dv">100</span></code></pre></li>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="dv">100000</span><span class="op">**</span><span class="dv">10</span>
+<span class="fl">100000.0</span><span class="op">**</span><span class="dv">10</span>
+<span class="dv">100000</span><span class="op">**</span><span class="dv">100</span>
+<span class="fl">100000.0</span><span class="op">**</span><span class="dv">100</span></code></pre></div></li>
 </ul>
+<h2 id="objects-and-object-oriented-programming">Objects and object-oriented programming</h2>
+<p>We'll talk about this in more detail later, but it's worth mentioning here that Python is an object-oriented language. What this means is that variables in Python are objects that are instances of a class.</p>
+<p>Objects have methods that can be used on them and attributes (member data) that are part of the object. All objects in a class have the same methods and same member data 'slots', but different objects will have different values in those slots.</p>
+<p>Note that even the basic numeric structures behave like objects. We can use tab completion to see what methods are available for an object and what member data are part of an object.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x.
+<span class="co"># x.as_integer_ratio  x.hex               x.real</span>
+<span class="co"># x.conjugate         x.imag              </span>
+<span class="co"># x.fromhex           x.is_integer        </span></code></pre></div>
+<p>Which of those are attributes/metadata ('member data') and which are methods ('member functions')? If it's a method, say <code>foo</code>, you can run the method as <code>x.foo()</code>. If it's member data, you can see its value with <code>x.foo</code>.</p>
 <h2 id="strings">Strings</h2>
 <p>Strings are immutable sequences of (zero or more) characters.</p>
 <p><strong>Sequences</strong></p>
@@ -270,22 +295,24 @@ math.cosh       math.frexp      math.modf</code></pre>
 <ul>
 <li><p><strong>Indexing</strong></p>
 <p>To see how indexing works in Python let’s use the string containing the digits 0 through 9.</p>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="ch">import</span> string
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> string
 string.digits 
 string.digits[<span class="dv">1</span>]
-string.digits[-<span class="dv">1</span>]</code></pre>
+string.digits[<span class="op">-</span><span class="dv">1</span>]</code></pre></div>
 <p>Note that indexing starts at 0 (unlike R and Fortran, but like C). Also negative integers index starting from the end of the sequence. You can find the length of a sequence using the <em>len</em> function.</p></li>
 <li><p><strong>Slicing</strong> Slicing allows you to select a subset of a string (or any sequence) by specifying start and stop indices as well as a step, which you specify using the <code>start:stop:step</code> notation inside of square braces.</p>
-<pre class="sourceCode python"><code class="sourceCode python">string.digits[<span class="dv">1</span>::<span class="dv">2</span>]
-string.digits[:<span class="dv">5</span>:-<span class="dv">1</span>]
-string.digits[-<span class="dv">3</span>:-<span class="dv">7</span>:-<span class="dv">1</span>]</code></pre></li>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">string.digits[<span class="dv">1</span>:<span class="dv">5</span>:<span class="dv">2</span>]
+string.digits[<span class="dv">1</span>::<span class="dv">2</span>]
+string.digits[:<span class="dv">5</span>:<span class="op">-</span><span class="dv">1</span>]
+string.digits[<span class="dv">1</span>:<span class="dv">5</span>:<span class="op">-</span><span class="dv">1</span>]
+string.digits[<span class="op">-</span><span class="dv">3</span>:<span class="op">-</span><span class="dv">7</span>:<span class="op">-</span><span class="dv">1</span>]</code></pre></div></li>
 <li><p><strong>Subsequence testing</strong></p>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="co">&#39;23&#39;</span> in string.digits 
-<span class="co">&#39;25&#39;</span> not in string.digits</code></pre></li>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co">&#39;23&#39;</span> <span class="op">in</span> string.digits 
+<span class="co">&#39;25&#39;</span> <span class="op">not</span> <span class="op">in</span> string.digits</code></pre></div></li>
 </ul>
 <p><strong>String methods</strong></p>
-<pre class="sourceCode python"><code class="sourceCode python">string1 = <span class="st">&quot;my string&quot;</span>
-string1.</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">string1 <span class="op">=</span> <span class="st">&quot;my string&quot;</span>
+string1.</code></pre></div>
 <pre><code>string1.capitalize  string1.islower     string1.rpartition
 string1.center      string1.isspace     string1.rsplit
 string1.count       string1.istitle     string1.rstrip
@@ -299,21 +326,21 @@ string1.index       string1.replace     string1.translate
 string1.isalnum     string1.rfind       string1.upper
 string1.isalpha     string1.rindex      string1.zfill
 string1.isdigit     string1.rjust       </code></pre>
-<pre class="sourceCode python"><code class="sourceCode python">string1.upper()
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">string1.upper()
 
 string1.upper?
 
-string1 + <span class="st">&quot; is your string.&quot;</span>
-<span class="co">&quot;*&quot;</span>*<span class="dv">10</span>
+string1 <span class="op">+</span> <span class="st">&quot; is your string.&quot;</span>
+<span class="co">&quot;*&quot;</span><span class="op">*</span><span class="dv">10</span>
 
 string1[<span class="dv">3</span>:]
 string1[<span class="dv">3</span>:<span class="dv">4</span>] 
 string1[<span class="dv">4</span>::<span class="dv">2</span>]
 
-string1[<span class="dv">3</span>:<span class="dv">5</span>] = <span class="st">&#39;ts&#39;</span></code></pre>
-<pre class="sourceCode python"><code class="sourceCode python">string1 &gt; <span class="st">&quot;ab&quot;</span>
-string1 &gt; <span class="st">&quot;zz&quot;</span>
-string1.__</code></pre>
+string1[<span class="dv">3</span>:<span class="dv">5</span>] <span class="op">=</span> <span class="st">&#39;ts&#39;</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">string1 <span class="op">&gt;</span> <span class="st">&quot;ab&quot;</span>
+string1 <span class="op">&gt;</span> <span class="st">&quot;zz&quot;</span>
+string1.__</code></pre></div>
 <pre><code>string1.__add__           string1.__len__
 string1.__class__         string1.__lt__
 string1.__contains__      string1.__mod__
@@ -331,7 +358,7 @@ string1.__hash__          string1.__str__
 string1.__init__          string1.__subclasshook__</code></pre>
 <p><strong>Exercises</strong></p>
 <ul>
-<li>Using this string: <code>x = 'The ant wants what all ants want.'</code>, solve the following string manipulation problems using string indexing, slicing, subsequence testing, and methods
+<li>Using this string: <code>x = 'The ant wants what all ants want.'</code>, solve the following string manipulation problems using string indexing, slicing, methods, and subsequence testing:
 <ol style="list-style-type: decimal">
 <li>Convert the string to all lower case letters (don’t change x).</li>
 <li>Count the number of occurrences of the substring <code>ant</code>.</li>
@@ -346,56 +373,62 @@ string1.__init__          string1.__subclasshook__</code></pre>
 </ul>
 <h2 id="tuples">Tuples</h2>
 <p>Tuples are immutable sequences of (zero or more) objects. Functions in Python often return tuples.</p>
-<pre class="sourceCode python"><code class="sourceCode python">x = <span class="dv">1</span>; y = <span class="st">&#39;foo&#39;</span>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> y <span class="op">=</span> <span class="st">&#39;foo&#39;</span>
 
-xy = (x, y)
+xy <span class="op">=</span> (x, y)
+<span class="bu">type</span>(xy)
+xy <span class="op">=</span> x,y
+<span class="bu">type</span>(xy)
 
 xy
 xy[<span class="dv">1</span>]
 
-xy[<span class="dv">1</span>] = <span class="dv">3</span></code></pre>
+xy[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">3</span></code></pre></div>
 <p><strong>Exercises</strong></p>
 <ul>
 <li><p>What's weird about this? What are the types involved?</p>
-<pre class="sourceCode python"><code class="sourceCode python">z = x,y
-a,b = x,y</code></pre></li>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">z <span class="op">=</span> x,y
+a,b <span class="op">=</span> x,y</code></pre></div></li>
 <li>Create the following: <code>x=5</code> and <code>y=6</code>. Now swap their values using a single line of code. (How would you do this in R?)</li>
 <li>What happens when you multiply a tuple by a number? how is this different than similar syntax in R?</li>
 <li><p>What's nice about using immutable objects in your code?</p></li>
 </ul>
 <h2 id="lists">Lists</h2>
 <p>Lists are mutable sequences of (zero or more) objects.</p>
-<pre class="sourceCode python"><code class="sourceCode python">dice = [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">dice <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]
 
 dice[<span class="dv">1</span>::<span class="dv">2</span>]
 
-dice[<span class="dv">1</span>::<span class="dv">2</span>] = dice[::<span class="dv">2</span>]
+dice[<span class="dv">1</span>::<span class="dv">2</span>] <span class="op">=</span> dice[::<span class="dv">2</span>]
 
 dice
 
-dice*<span class="dv">2</span>
+dice<span class="op">*</span><span class="dv">2</span>
 
-dice+dice[::-<span class="dv">1</span>]
+dice<span class="op">+</span>dice[::<span class="op">-</span><span class="dv">1</span>]
 
-<span class="dv">1</span> in dice</code></pre>
+<span class="dv">1</span> <span class="op">in</span> dice
+
+dice.extend(dice)
+dice.append(dice)</code></pre></div>
 <p><strong>Exercises</strong></p>
 <ul>
 <li>Create a list of numbers. Reverse the order of the items in the list using slicing. Now reverse the order of the items using a list method. How does using the method differ from slicing?</li>
-<li>Do you think you think tuples have a method to reverse the order of its items? Why or why not? Check to see if you are correct or not.</li>
+<li>Do you think tuples have a method to reverse the order of its items? Why or why not? Check to see if you are correct or not.</li>
 <li>Using a list method sort your numbers. Create a list of strings and sort it.</li>
 <li>Figure out some different ways of combining your list of numbers with your list of strings to create a single list of mixed type elements.</li>
 <li>Now try to sort the resulting list. What happens?</li>
 <li><p>What does the following tell you about copying and use of memory in Python?</p>
-<pre class="sourceCode python"><code class="sourceCode python">a = [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>]
-b = a
-<span class="dt">id</span>(a)
-<span class="dt">id</span>(b)
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>]
+b <span class="op">=</span> a
+<span class="bu">id</span>(a)
+<span class="bu">id</span>(b)
 <span class="co"># this should confirm what you might suspect</span>
-a[<span class="dv">1</span>] = <span class="dv">5</span></code></pre></li>
+a[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">5</span></code></pre></div></li>
 </ul>
 <h2 id="dictionaries">Dictionaries</h2>
 <p>Dictionaries are mutable, unordered collections of key-value pairs.</p>
-<pre class="sourceCode python"><code class="sourceCode python">students = {<span class="st">&quot;Jarrod Millman&quot;</span>: [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">9</span>], 
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">students <span class="op">=</span> {<span class="st">&quot;Jarrod Millman&quot;</span>: [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">9</span>], 
             <span class="co">&quot;Thomas Kluyver&quot;</span>: [<span class="dv">11</span>, <span class="dv">9</span>, <span class="dv">10</span>], 
             <span class="co">&quot;Stefan van der Walt&quot;</span>: [<span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">9</span>]}
 students
@@ -403,7 +436,7 @@ students.keys()
 students.values()
 students[<span class="st">&quot;Jarrod Millman&quot;</span>]
 students[<span class="st">&quot;Jarrod Millman&quot;</span>][<span class="dv">1</span>]
-students.</code></pre>
+students.</code></pre></div>
 <p><strong>Exercises</strong></p>
 <ul>
 <li>How can you add an item to a dictionary.</li>
@@ -413,9 +446,9 @@ students.</code></pre>
 </ul>
 <h2 id="sets">Sets</h2>
 <p>Sets are immutable, unordered collections of unique elements.</p>
-<pre class="sourceCode python"><code class="sourceCode python">x =  {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">4</span>}
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span>  {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">4</span>}
 x
-x.</code></pre>
+x.</code></pre></div>
 <pre><code>x.add                          x.issubset
 x.clear                        x.issuperset
 x.copy                         x.pop
@@ -427,99 +460,102 @@ x.intersection_update          x.update
 x.isdisjoint                   </code></pre>
 <h1 id="built-in-functions">Built-in functions</h1>
 <ul>
-<li><a href="https://docs.python.org/2/library/functions.html">https://docs.python.org/2/library/functions.html</a></li>
+<li><a href="https://docs.python.org/2/library/functions.html" class="uri">https://docs.python.org/2/library/functions.html</a></li>
 </ul>
 <p>Python has several built-in functions (you can find a full list using the link above). We’ve already used a few (e.g., <code>len(), type(), print()</code>). Here are a few more that we you will find useful.</p>
 <p><em>zip</em> and <em>enumerate</em> create objects that you can iterate through, but you can't view the elements directly except by looping over them. They're useful either to convert to lists or to loop through element by element.</p>
-<pre class="sourceCode python"><code class="sourceCode python">x = <span class="dt">zip</span>([<span class="dv">1</span>, <span class="dv">2</span>], [<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>])
-<span class="dt">list</span>(x)</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="bu">zip</span>([<span class="dv">1</span>, <span class="dv">2</span>], [<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>])
+<span class="bu">list</span>(x)</code></pre></div>
 <p>That's sort of like <em>cbind</em> in R.</p>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="dt">enumerate</span>([<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>])
-<span class="dt">list</span>(<span class="dt">enumerate</span>([<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>]))</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">enumerate</span>([<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>])
+<span class="bu">list</span>(<span class="bu">enumerate</span>([<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>]))</code></pre></div>
 <p>We'll soon see an example usage of enumerate within the context of looping.</p>
 <p>Some other useful built-in functions are <code>abs()</code>, <code>all()</code>, <code>any()</code>, <code>dict()</code>, <code>dir()</code>, <code>id()</code>, <code>list()</code>, and <code>set()</code>.</p>
 <h1 id="control-flow">Control flow</h1>
 <ul>
-<li><a href="https://docs.python.org/2/tutorial/controlflow.html">https://docs.python.org/2/tutorial/controlflow.html</a></li>
+<li><a href="https://docs.python.org/2/tutorial/controlflow.html" class="uri">https://docs.python.org/2/tutorial/controlflow.html</a></li>
 </ul>
 <h2 id="if-then-else">If-then-else</h2>
 <ul>
-<li><a href="https://docs.python.org/2/tutorial/controlflow.html#if-statements">https://docs.python.org/2/tutorial/controlflow.html#if-statements</a></li>
+<li><a href="https://docs.python.org/2/tutorial/controlflow.html#if-statements" class="uri">https://docs.python.org/2/tutorial/controlflow.html#if-statements</a></li>
 </ul>
 <p>This is as expected. As previously noted, the indentation is important.</p>
-<pre class="sourceCode python"><code class="sourceCode python">x = <span class="dv">2</span>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="dv">2</span>
 
-<span class="kw">if</span> a&gt;=<span class="dv">4</span>:    
-    <span class="dt">print</span>(<span class="st">&#39;a is big&#39;</span>)
-    <span class="kw">if</span>(a == <span class="dv">4</span>):
-        <span class="dt">print</span>(<span class="st">&#39;a is 4&#39;</span>)
-<span class="kw">else</span>:
-    <span class="dt">print</span>(<span class="st">&#39;a is small&#39;</span>)
+<span class="cf">if</span> a<span class="op">&gt;=</span><span class="dv">4</span>:    
+    <span class="bu">print</span>(<span class="st">&#39;a is big&#39;</span>)
+    <span class="cf">if</span>(a <span class="op">==</span> <span class="dv">4</span>):
+        <span class="bu">print</span>(<span class="st">&#39;a is 4&#39;</span>)
+<span class="cf">else</span>:
+    <span class="bu">print</span>(<span class="st">&#39;a is small&#39;</span>)
 
-<span class="kw">if</span> a&gt;=<span class="dv">4</span>:    
-    <span class="dt">print</span>(<span class="st">&#39;a is big&#39;</span>)
-    <span class="kw">if</span>(a == <span class="dv">4</span>):
-        <span class="dt">print</span>(<span class="st">&#39;a is 4&#39;</span>)
-    <span class="kw">else</span>:
-        <span class="dt">print</span>(<span class="st">&#39;a is not 4&#39;</span>)</code></pre>
+<span class="cf">if</span> a<span class="op">&gt;=</span><span class="dv">4</span>:    
+    <span class="bu">print</span>(<span class="st">&#39;a is big&#39;</span>)
+    <span class="cf">if</span>(a <span class="op">==</span> <span class="dv">4</span>):
+        <span class="bu">print</span>(<span class="st">&#39;a is 4&#39;</span>)
+    <span class="cf">else</span>:
+        <span class="bu">print</span>(<span class="st">&#39;a is not 4&#39;</span>)</code></pre></div>
 <h2 id="for-loops-and-list-comprehension">For-loops (and list comprehension)</h2>
 <ul>
-<li><a href="https://docs.python.org/2/tutorial/controlflow.html#for-statements">https://docs.python.org/2/tutorial/controlflow.html#for-statements</a></li>
-<li><a href="https://docs.python.org/2/whatsnew/2.0.html#list-comprehensions">https://docs.python.org/2/whatsnew/2.0.html#list-comprehensions</a></li>
+<li><a href="https://docs.python.org/2/tutorial/controlflow.html#for-statements" class="uri">https://docs.python.org/2/tutorial/controlflow.html#for-statements</a></li>
+<li><a href="https://docs.python.org/2/whatsnew/2.0.html#list-comprehensions" class="uri">https://docs.python.org/2/whatsnew/2.0.html#list-comprehensions</a></li>
 </ul>
 <p>Here's basic use of a for loop. Once again indentation is critical, in this case for indicating where the loop ends.</p>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="kw">for</span> x in [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]:
-    <span class="dt">print</span>(x)
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="cf">for</span> x <span class="op">in</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]:
+    <span class="bu">print</span>(x)
 
-<span class="kw">for</span> x in [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]:
-    y = x*<span class="dv">2</span>
-    <span class="dt">print</span>(y, end=<span class="st">&quot; &quot;</span>)
+<span class="cf">for</span> x <span class="op">in</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]:
+    y <span class="op">=</span> x<span class="op">*</span><span class="dv">2</span>
+    <span class="bu">print</span>(y, end<span class="op">=</span><span class="st">&quot; &quot;</span>)
 
-<span class="kw">for</span> x in [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]:
-    y = x*<span class="dv">2</span>
-<span class="dt">print</span>(y, end=<span class="st">&quot; &quot;</span>)</code></pre>
+<span class="cf">for</span> x <span class="op">in</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]:
+    y <span class="op">=</span> x<span class="op">*</span><span class="dv">2</span>
+<span class="bu">print</span>(y, end<span class="op">=</span><span class="st">&quot; &quot;</span>)</code></pre></div>
 <p>Building up a list piece-by-piece is a common task, which can easily be done in a for-loop. List comprehension provides a compact syntax to handle this task.</p>
-<pre class="sourceCode python"><code class="sourceCode python">[x <span class="kw">for</span> x in <span class="dt">range</span>(<span class="dv">4</span>)]
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">[x <span class="cf">for</span> x <span class="op">in</span> <span class="bu">range</span>(<span class="dv">4</span>)]
 
-y = [-<span class="dv">4</span>, <span class="dv">3</span>, -<span class="dv">1</span>, <span class="fl">2.5</span>, <span class="dv">7</span>]
-[x <span class="kw">for</span> x in y <span class="kw">if</span> x &gt; <span class="dv">0</span>]  <span class="co"># list comprehension</span>
+y <span class="op">=</span> [<span class="op">-</span><span class="dv">4</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">1</span>, <span class="fl">2.5</span>, <span class="dv">7</span>]
+[x <span class="cf">for</span> x <span class="op">in</span> y <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>]  <span class="co"># list comprehension</span>
 
-<span class="ch">import</span> string
-letters = string.ascii_lowercase
+<span class="im">import</span> string
+letters <span class="op">=</span> string.ascii_lowercase
 
-[l[<span class="dv">1</span>] <span class="kw">for</span> l in <span class="dt">enumerate</span>(letters) <span class="kw">if</span> l[<span class="dv">0</span>] &gt; <span class="dv">13</span>] 
+<span class="co"># concise but terse:</span>
+[l[<span class="dv">1</span>] <span class="cf">for</span> l <span class="op">in</span> <span class="bu">enumerate</span>(letters) <span class="cf">if</span> l[<span class="dv">0</span>] <span class="op">&gt;</span> <span class="dv">13</span>]
+<span class="co"># better style:</span>
+[letter <span class="cf">for</span> index, letter <span class="op">in</span> <span class="bu">enumerate</span>(letters) <span class="cf">if</span> index <span class="op">&gt;</span> <span class="dv">13</span>]
 
-x = <span class="dt">zip</span>([<span class="st">&#39;clinton&#39;</span>, <span class="st">&#39;bush&#39;</span>, <span class="st">&#39;obama&#39;</span>, <span class="st">&#39;trump&#39;</span>], [<span class="st">&#39;D&#39;</span>, <span class="st">&#39;R&#39;</span>, <span class="st">&#39;D&#39;</span>, <span class="st">&#39;R&#39;</span>])
-<span class="kw">for</span> pres,party in x:
-    <span class="dt">print</span>(pres, party)</code></pre>
+x <span class="op">=</span> <span class="bu">zip</span>([<span class="st">&#39;clinton&#39;</span>, <span class="st">&#39;bush&#39;</span>, <span class="st">&#39;obama&#39;</span>, <span class="st">&#39;trump&#39;</span>], [<span class="st">&#39;D&#39;</span>, <span class="st">&#39;R&#39;</span>, <span class="st">&#39;D&#39;</span>, <span class="st">&#39;R&#39;</span>])
+<span class="cf">for</span> pres,party <span class="op">in</span> x:
+    <span class="bu">print</span>(pres, party)</code></pre></div>
 <p><strong>Exercises</strong></p>
 <ul>
 <li>See what <code>[1, 2, 3] + 3</code> returns. Try to explain what happened and why.</li>
 <li>Use list comprehension to perform element-wise addition of a scalar to a list of scalars.</li>
-<li>How would you do the same task using a for loop?</li>
+<li>How would you do the same task using a for loop? The <code>range</code> function may be helpful as might the <code>enumerate</code> function.</li>
 <li>Use a for loop to iterate through the elements of a zip object and determine the type of the individual elements.</li>
 </ul>
 <h1 id="functions">Functions</h1>
 <ul>
-<li><a href="https://docs.python.org/2/tutorial/controlflow.html#defining-functions">https://docs.python.org/2/tutorial/controlflow.html#defining-functions</a></li>
+<li><a href="https://docs.python.org/2/tutorial/controlflow.html#defining-functions" class="uri">https://docs.python.org/2/tutorial/controlflow.html#defining-functions</a></li>
 </ul>
 <p>Here's an example that illustrates both positional arguments (always first) and named arguments.</p>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> add(x, y=<span class="dv">1</span>, absol = <span class="ot">False</span>):
-    <span class="kw">if</span> absol:
-        <span class="kw">return</span>(<span class="dt">abs</span>(x+y))
-    <span class="kw">else</span>:
-        <span class="kw">return</span>(x+y)
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> add(x, y<span class="op">=</span><span class="dv">1</span>, absol<span class="op">=</span><span class="va">False</span>):
+    <span class="cf">if</span> absol:
+        <span class="cf">return</span>(<span class="bu">abs</span>(x<span class="op">+</span>y))
+    <span class="cf">else</span>:
+        <span class="cf">return</span>(x<span class="op">+</span>y)
 
 add(<span class="dv">3</span>)
 add(<span class="dv">3</span>, <span class="dv">5</span>)
 
-add(<span class="dv">3</span>, absol = <span class="ot">True</span>, y = -<span class="dv">5</span>)
+add(<span class="dv">3</span>, absol<span class="op">=</span><span class="va">True</span>, y<span class="op">=-</span><span class="dv">5</span>)
 
-add(y = -<span class="dv">5</span>, x = <span class="dv">3</span>)
-add(y = -<span class="dv">5</span>, <span class="dv">3</span>)</code></pre>
+add(y<span class="op">=-</span><span class="dv">5</span>, x<span class="op">=</span><span class="dv">3</span>)
+add(y<span class="op">=-</span><span class="dv">5</span>, <span class="dv">3</span>)</code></pre></div>
 <p><strong>Exercises</strong></p>
 <ul>
-<li>Define a function that will take the sqrt of a number if it is bigger than 0 or set it to 0 otherwise.</li>
+<li>Define a function that will take the sqrt of a number and will (if requested by the user) set the square root of a negative number to 0.</li>
 <li>Now use the function in a list comprehension to operate on a list of numbers.</li>
 <li>What happens if you modify a list within a function in Python; why do you think this is?</li>
 <li>What happens if you modify a single number (scalar) within a function in Python; why do you think this is?</li>
@@ -528,28 +564,28 @@ add(y = -<span class="dv">5</span>, <span class="dv">3</span>)</code></pre>
 <h1 id="data-formats">Data formats</h1>
 <h2 id="csv">CSV</h2>
 <ul>
-<li><a href="https://docs.python.org/2/library/csv.html">https://docs.python.org/2/library/csv.html</a></li>
+<li><a href="https://docs.python.org/2/library/csv.html" class="uri">https://docs.python.org/2/library/csv.html</a></li>
 </ul>
 <p>The Python standard library provides a package for reading and writing CSV files. This is a somewhat low-level library, so in practice you will often use NumPy, SciPy, or Pandas CSV functionality.</p>
 <h2 id="json">JSON</h2>
 <ul>
-<li><a href="https://docs.python.org/2/library/json.html">https://docs.python.org/2/library/json.html</a></li>
+<li><a href="https://docs.python.org/2/library/json.html" class="uri">https://docs.python.org/2/library/json.html</a></li>
 </ul>
 <p>However the JSON package in the standard library is much more useful.</p>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="ch">import</span> json
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> json
 
-x = {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;Jarrod&quot;</span>, <span class="st">&quot;department&quot;</span>: <span class="st">&quot;Biostatistics&quot;</span>}
+x <span class="op">=</span> {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;Jarrod&quot;</span>, <span class="st">&quot;department&quot;</span>: <span class="st">&quot;Biostatistics&quot;</span>}
 
-<span class="kw">with</span> <span class="dt">open</span>(<span class="st">&quot;tmp.json&quot;</span>, <span class="st">&quot;w&quot;</span>) <span class="ch">as</span> outfile: 
+<span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;tmp.json&quot;</span>, <span class="st">&quot;w&quot;</span>) <span class="im">as</span> outfile: 
     json.dump(x, outfile)
 
 cat tmp.json  <span class="co"># special IPython functionality</span>
 
-<span class="kw">with</span> <span class="dt">open</span>(<span class="st">&quot;tmp.json&quot;</span>) <span class="ch">as</span> infile:
-    y = json.load(infile)
+<span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;tmp.json&quot;</span>) <span class="im">as</span> infile:
+    y <span class="op">=</span> json.load(infile)
 
-y</code></pre>
-<p>Note that <code>cat</code> is not a Python statement. IPython is clever enough to quess that you want it to call out to the underlying operating system.</p>
+y</code></pre></div>
+<p>Note that <code>cat</code> is not a Python statement. IPython is clever enough to guess that you want it to call out to the underlying operating system.</p>
 <p><strong>Exercise</strong></p>
 <ul>
 <li>One of the nice things above the JSON format is that it so well structured that it easy for a machine to parse, but simple enough that it easy for humans to read. By default <code>json.dump</code> writes everything out to disk without line breaks. For readability purposes, use <code>json.dump?</code> to figure out how to pretty-print the text as well as sort it alphabetically by key.</li>
@@ -557,71 +593,71 @@ y</code></pre>
 </ul>
 <h1 id="standard-library">Standard library</h1>
 <ul>
-<li><a href="https://docs.python.org/2/tutorial/stdlib.html">https://docs.python.org/2/tutorial/stdlib.html</a></li>
+<li><a href="https://docs.python.org/2/tutorial/stdlib.html" class="uri">https://docs.python.org/2/tutorial/stdlib.html</a></li>
 </ul>
 <p>Python provides a wealth of functionality in its huge standard library. We’ve already seen several packages in the standard library (e.g., math, csv, json). If you need some functionality the standard library is one of the first places to look.</p>
 <p>Here are a couple packages that you may find useful.</p>
 <h2 id="os">os</h2>
 <ul>
-<li><a href="https://docs.python.org/2/tutorial/stdlib.html#operating-system-interface">https://docs.python.org/2/tutorial/stdlib.html#operating-system-interface</a></li>
+<li><a href="https://docs.python.org/2/tutorial/stdlib.html#operating-system-interface" class="uri">https://docs.python.org/2/tutorial/stdlib.html#operating-system-interface</a></li>
 </ul>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="ch">import</span> os
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> os
 
 os.getcwd()
-pwd</code></pre>
+pwd           <span class="co"># IPython operating system call</span></code></pre></div>
 <p><strong>Exercise</strong></p>
 <ul>
 <li>Use <code>os?</code> and <code>dir(os)</code> to explore the os package.</li>
 </ul>
 <h2 id="re">re</h2>
 <ul>
-<li><a href="https://docs.python.org/2/howto/regex.html">https://docs.python.org/2/howto/regex.html</a></li>
+<li><a href="https://docs.python.org/2/howto/regex.html" class="uri">https://docs.python.org/2/howto/regex.html</a></li>
 </ul>
 <p>The <code>re</code> package provides support for regular expressions.</p>
 <h1 id="math-statistics-and-plotting">Math, statistics, and plotting</h1>
 <h2 id="numpy-and-scipy">Numpy and scipy</h2>
 <p>Standard lists in Python are not amenable to mathematical manipulation unlike standard vectors in R. Instead we generally work with numpy arrays. These arrays can be of various dimensions (i.e., vectors, matrices, multi-dimensional arrays).</p>
-<pre class="sourceCode python"><code class="sourceCode python">z = [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>] 
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">z <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>] 
 
-y = np.array(z)
-y*<span class="dv">3</span>
+y <span class="op">=</span> np.array(z)
+y<span class="op">*</span><span class="dv">3</span>
 
 y.dtype
 
 
-x = np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]], dtype=np.float64)
-x*x
+x <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]], dtype<span class="op">=</span>np.float64)
+x<span class="op">*</span>x
 x.dot(x)
 x.T
 
 np.linalg.svd(x)
 
-e = np.linalg.eig(x)
+e <span class="op">=</span> np.linalg.eig(x)
 
 e[<span class="dv">0</span>]  <span class="co"># first eigenvalue (not the largest in this case...)</span>
-e[<span class="dv">1</span>][:, <span class="dv">0</span>] <span class="co"># corresponding eigenvector</span></code></pre>
+e[<span class="dv">1</span>][:, <span class="dv">0</span>] <span class="co"># corresponding eigenvector</span></code></pre></div>
 <p>All of the elements of the array must be of the same type.</p>
 <p>There are a variety of numpy functions that allow us to do standard mathematical/statistical manipulations.</p>
 <p>Here we'll use some of those functions in addition to some syntax for subsetting and vectorized calculations.</p>
-<pre class="sourceCode python"><code class="sourceCode python">np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>)
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>)
 
 np.random.seed(<span class="dv">0</span>)
-x = np.random.normal(size = <span class="dv">10</span>)
+x <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">10</span>)
 
-pos = x &gt; <span class="dv">0</span>
+pos <span class="op">=</span> x <span class="op">&gt;</span> <span class="dv">0</span>
 
-y = x[pos]
+y <span class="op">=</span> x[pos]
 
 x[[<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>]]
 
-x[pos] = <span class="dv">0</span>
+x[pos] <span class="op">=</span> <span class="dv">0</span>
 
-np.cos(x)</code></pre>
+np.cos(x)</code></pre></div>
 <p>scipy has even more numerical routines, including working with distributions and additional linear algebra.</p>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="ch">import</span> scipy.stats <span class="ch">as</span> st
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> scipy.stats <span class="im">as</span> st
 st.norm.cdf(<span class="fl">1.96</span>, <span class="dv">0</span>, <span class="dv">1</span>)
 st.norm.cdf(<span class="fl">1.96</span>, <span class="fl">0.5</span>, <span class="dv">2</span>)
-st.norm(<span class="fl">0.5</span>, <span class="dv">2</span>).cdf(<span class="fl">1.96</span>)</code></pre>
+st.norm(<span class="fl">0.5</span>, <span class="dv">2</span>).cdf(<span class="fl">1.96</span>)</code></pre></div>
 <p><strong>Exercise</strong></p>
 <ul>
 <li>See what happens if you try to create a 2-d numpy array with one column of numbers and one column of characters/strings.</li>
@@ -630,8 +666,8 @@ st.norm(<span class="fl">0.5</span>, <span class="dv">2</span>).cdf(<span class=
 </ul>
 <h2 id="pandas">Pandas</h2>
 <p>Pandas provides a Python implementation of R's dataframe capabilities. Let's see some example code.</p>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="ch">import</span> pandas <span class="ch">as</span> pd
-dat = pd.read_csv(<span class="st">&#39;gapminder.csv&#39;</span>)
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> pandas <span class="im">as</span> pd
+dat <span class="op">=</span> pd.read_csv(<span class="st">&#39;gapminder.csv&#39;</span>)
 dat.head()
 
 dat.columns
@@ -641,25 +677,25 @@ dat[<span class="dv">0</span>:<span class="dv">5</span>]
 
 dat.sort_values([<span class="st">&#39;year&#39;</span>, <span class="st">&#39;country&#39;</span>])
 
-dat.loc[<span class="dv">0</span>:<span class="dv">5</span>, [<span class="st">&#39;year&#39;</span>, <span class="st">&#39;country&#39;</span>]]
+dat.loc[<span class="dv">0</span>:<span class="dv">5</span>, [<span class="st">&#39;year&#39;</span>, <span class="st">&#39;country&#39;</span>]]  <span class="co"># R-style indexing</span>
 
-dat[dat.year == <span class="dv">1952</span>]
+dat[dat.year <span class="op">==</span> <span class="dv">1952</span>]
 
-ndat = dat[[<span class="st">&#39;pop&#39;</span>,<span class="st">&#39;lifeExp&#39;</span>,<span class="st">&#39;gdpPercap&#39;</span>]]
-ndat.<span class="dt">apply</span>(<span class="kw">lambda</span> col: col.<span class="dt">max</span>() - col.<span class="dt">min</span>())</code></pre>
+ndat <span class="op">=</span> dat[[<span class="st">&#39;pop&#39;</span>,<span class="st">&#39;lifeExp&#39;</span>,<span class="st">&#39;gdpPercap&#39;</span>]]
+ndat.<span class="bu">apply</span>(<span class="kw">lambda</span> col: col.<span class="bu">max</span>() <span class="op">-</span> col.<span class="bu">min</span>())</code></pre></div>
 <p>Now let's see the sort of split-apply-combine functionality that is popular in dplyr and related R packages.</p>
-<pre class="sourceCode python"><code class="sourceCode python">dat2007 = dat[dat.year == <span class="dv">2007</span>].copy()
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">dat2007 <span class="op">=</span> dat[dat.year <span class="op">==</span> <span class="dv">2007</span>].copy()  <span class="co"># .copy() ensures a copy is made</span>
 
-dat2007.groupby(<span class="st">&#39;continent&#39;</span>).mean()
+dat2007.groupby(<span class="st">&#39;continent&#39;</span>, as_index<span class="op">=</span><span class="va">False</span>).mean()
 
 <span class="kw">def</span> stdize(vals):
-    <span class="kw">return</span>((vals - vals.mean()) / vals.std())
+    <span class="cf">return</span>((vals <span class="op">-</span> vals.mean()) <span class="op">/</span> vals.std())
 
-dat2007[<span class="st">&#39;lifeExpZ&#39;</span>] = dat2007.groupby(<span class="st">&#39;continent&#39;</span>)[<span class="st">&#39;lifeExp&#39;</span>].transform(stdize)</code></pre>
+dat2007[<span class="st">&#39;lifeExpZ&#39;</span>] <span class="op">=</span> dat2007.groupby(<span class="st">&#39;continent&#39;</span>)[<span class="st">&#39;lifeExp&#39;</span>].transform(stdize)</code></pre></div>
 <p><strong>Exercise</strong></p>
 <ul>
 <li>Use <em>pd.merge()</em> to merge the continent means for life expectancy for 2007 back into the original <em>dat2007</em> dataFrame.</li>
-<li>Explore the pandas documentation to see if there is a way to add the continent means as a column without an explicit merge (i.e., mimicing capability built into dply)?</li>
+<li>Explore the pandas documentation to see if there is a way to add the continent means as a column without an explicit merge (i.e., mimicing capability built into dplyr)?</li>
 </ul>
 <h2 id="matplotlib">Matplotlib</h2>
 <p>Work through the material in <a href="http://matplotlib.org/users/pyplot_tutorial.html">the Matplotlib tutorial</a> and then solve the following problems.</p>
@@ -673,36 +709,36 @@ dat2007[<span class="st">&#39;lifeExpZ&#39;</span>] = dat2007.groupby(<span clas
 </ul>
 <h1 id="classes">Classes</h1>
 <ul>
-<li><a href="https://docs.python.org/2/tutorial/classes.html">https://docs.python.org/2/tutorial/classes.html</a></li>
+<li><a href="https://docs.python.org/2/tutorial/classes.html" class="uri">https://docs.python.org/2/tutorial/classes.html</a></li>
 </ul>
 <p>We've already seen a bunch of object-oriented behavior. Here we'll see how to make our own classes and objects that are instances (realizations) of a class.</p>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> Rectangle(<span class="dt">object</span>):
-    dim = <span class="dv">2</span>  <span class="co"># class variable</span>
-    counter = <span class="dv">0</span>
-    <span class="kw">def</span> <span class="ot">__init__</span>(<span class="ot">self</span>, height, width):
-        <span class="ot">self</span>.height = height  <span class="co"># instance variable</span>
-        <span class="ot">self</span>.width = width    <span class="co"># instance variable</span>
-        <span class="ot">self</span>.set_diagonal()
-        Rectangle.counter += <span class="dv">1</span>
-    <span class="kw">def</span> <span class="ot">__repr__</span>(<span class="ot">self</span>):
-        <span class="kw">return</span>(<span class="st">&quot;</span><span class="ot">{0}</span><span class="st"> by </span><span class="ot">{1}</span><span class="st">&quot;</span>.<span class="dt">format</span>(<span class="ot">self</span>.height, <span class="ot">self</span>.width))        
-    <span class="kw">def</span> area(<span class="ot">self</span>):
-        <span class="kw">return</span>(<span class="ot">self</span>.height*<span class="ot">self</span>.width)
-    <span class="kw">def</span> set_diagonal(<span class="ot">self</span>):
-        <span class="ot">self</span>.diagonal = <span class="dt">pow</span>(<span class="ot">self</span>.height**<span class="dv">2</span> + <span class="ot">self</span>.width**<span class="dv">2</span>, <span class="fl">0.5</span>)
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> Rectangle(<span class="bu">object</span>):
+    dim <span class="op">=</span> <span class="dv">2</span>  <span class="co"># class variable</span>
+    counter <span class="op">=</span> <span class="dv">0</span>
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, height, width):
+        <span class="va">self</span>.height <span class="op">=</span> height  <span class="co"># instance variable</span>
+        <span class="va">self</span>.width <span class="op">=</span> width    <span class="co"># instance variable</span>
+        <span class="va">self</span>.set_diagonal()
+        Rectangle.counter <span class="op">+=</span> <span class="dv">1</span>
+    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):
+        <span class="cf">return</span>(<span class="st">&quot;</span><span class="sc">{0}</span><span class="st"> by </span><span class="sc">{1}</span><span class="st">&quot;</span>.<span class="bu">format</span>(<span class="va">self</span>.height, <span class="va">self</span>.width))        
+    <span class="kw">def</span> area(<span class="va">self</span>):
+        <span class="cf">return</span>(<span class="va">self</span>.height<span class="op">*</span><span class="va">self</span>.width)
+    <span class="kw">def</span> set_diagonal(<span class="va">self</span>):
+        <span class="va">self</span>.diagonal <span class="op">=</span> <span class="bu">pow</span>(<span class="va">self</span>.height<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="va">self</span>.width<span class="op">**</span><span class="dv">2</span>, <span class="fl">0.5</span>)
 
-x = Rectangle(<span class="dv">10</span>, <span class="dv">5</span>)
+x <span class="op">=</span> Rectangle(<span class="dv">10</span>, <span class="dv">5</span>)
 
 x.dim
-x.dim = <span class="st">&#39;foo&#39;</span>
+x.dim <span class="op">=</span> <span class="st">&#39;foo&#39;</span>
 x.dim <span class="co"># hmmm</span>
 
 x.area()
 Rectangle.area(x)
 
-y = Rectangle(<span class="dv">4</span>, <span class="dv">8</span>)
+y <span class="op">=</span> Rectangle(<span class="dv">4</span>, <span class="dv">8</span>)
 y.counter
-x.counter</code></pre>
+x.counter</code></pre></div>
 <h1 id="mini-project">Mini-project</h1>
 <p>Please open <em>project.html</em> and work through the analysis of the Senatorial tweets with your group.</p>
 <h1 id="a-note-on-the-contents">A Note on the Contents</h1>

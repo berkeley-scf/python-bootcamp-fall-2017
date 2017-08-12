@@ -20,9 +20,9 @@ Questions
 
 4. What is the screen name of the senator with the largest number of followers.
 
-5. Make a list of lists where the outer list represents senators and the inner list contains each senator's tweets, and call it *tweets*.
+5. Make a list of lists where the outer list represents senators and the inner list contains the text of each senator's tweets, and call it *tweets*.
 
-6. Write a function, called *remove_punct*, which takes a word and returns the word with all punctuation characters removed, except for those that occur within a word.
+6. Write a function, called *remove_punct*, that takes a word and returns the word with all punctuation characters removed, except for those that occur within a word.
 
 7. Write a function that takes tweet and returns a cleaned up version of the tweet. Here is an example function to get you started:
 
@@ -40,23 +40,25 @@ Questions
     Note that the function I've provided is a bit buggy - it has some problems with some tweets. If your goal is to convert the tweet into a discrete set of words, what is going wrong here? Fix up and extend the example function.
 
 
-8. Use the following file to create a list, called *stopwords*, that contains common english words.  <http://www.textfixer.com/resources/common-english-words.txt>
+8. Use the following file to create a list, called *stopwords*, that contains common english words.  <http://www.textfixer.com/resources/common-english-words.txt>.
 Make sure to pull the data into Python by writing Python code to download and suck the data into Python.
 
 9. Write a function, called *tokenize*, which takes a tweet, cleans it, and removes all punctuation and stopwords.
 
 10. Create a list of lists, tweets_content, using your *tokenize* function.
 
-11. Create a list, *tokens*, where each senator's tweets are made into a single string.
+11. Create a list, *tokens*, where all 200 of each senator's tweets are made into a single string.
 
 12.) Create a Pandas dataFrame with the following columns: senator name or handle, party of the senator, and number of times a prominent politician is mentioned in each senator's tweets. You might count the number of 'Obama', 'Trump', or 'Clinton' references.
 
     You can use this to create the party column (1=Republican, 0=Democratic):
     ``` {.sourceCode .bash}
-    party = np.array([1,0,0,1,1,1,0,0,0,1,0,0,1,1,1,1,0,0,0,0,1,0,0,0,1,1,1,1,0,0,0,0,1,0,1,0,1,1,1,0,1,0,1,0,1,1,0,1,0,1,0,1,0,1,0,0,0,0,1,1,0,1,1,1,0,1,1,1,0,0,1,0,0,0,1,0,0,0,1,1,1,1,0,1,1,1,0,1,1,1,0,1,0,1,1,0,1,0,1,1])
+    party = np.array([1,1,1,1,1,1,0,0,1,0,1,1,0,0,0,1,1,1,0,0,0,1,1,1,1,0,1,0,1,1,1,0,0,0,0,0,0,1,0,1,1,1,0,1,1,1,0,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,0,1,1,0,0,0,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,1,1,0,0,1,0,1,0,0,1,1,1,0,1])
     ```
 
-13.) Use a Poisson GLM to assess the relationship between party and number of Obama/Trump/Clinton mentions. Does one party tend to mention Obama/Trump/Clinton more in their tweets?
+That should correspond to the ordering in `timelines` but of course it would be more robust to create a dataFrame that has user names and party as columns and merge that with the count information. 
+
+13.) Use a Poisson GLM to assess the relationship between party and number of Obama/Trump/Clinton mentions. Does one party tend to mention Obama/Trump/Clinton more in their tweets? Can you deduce a pattern by considering the party of the senator and the party of Obama/Trump/Clinton?
 
     Here's some syntax to help you get started:
     ``` {.sourceCode .bash}
@@ -71,4 +73,4 @@ Make sure to pull the data into Python by writing Python code to download and su
 
     Is this consistent with the results of your statistical analysis?
 
-15.) Please fill out the feedback form for the bootcamp: <https://docs.google.com/forms/d/e/1FAIpQLSepReFeUy-emnMOGCACIQlYCNbfVsfEID4iCTWGeLtOVMWZYA/viewform>.
+

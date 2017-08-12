@@ -23,11 +23,16 @@ You will also need Python and IPython installed on your computer, as well as a f
 Packages can generally be installed via pip, or via conda if you have the anaconda or miniconda installation of Python.
 
 ```{.sourceCode .bash}
+## using pip
 pip install ipython
 pip install numpy
 # or to install within your home directory if you do not have admin control of the computer
 pip install --user ipython
 pip install --user numpy
+
+## using conda
+conda list
+conda install ipython
 ```
 
 For additional help with installation, please see the [IPython installation page](http://ipython.org/install.html).
@@ -50,7 +55,7 @@ Some introductory video lectures:
 While working through this tutorial, you should type the example code
 snippets at an interactive Python terminal. I recommend using either the
 IPython shell or the IPython notebook. To start an IPython shell, type
-the following at a BASH prompt:
+the following at a bash prompt:
 
 ``` {.sourceCode .bash}
 ipython
@@ -77,7 +82,7 @@ from __future__ import (absolute_import,
 ```
 
  The idea is that by
- using this package and adding a few imports to the top of your Python
+ using the future package and adding few imports, as above, to the top of your Python
  modules you can write "predominantly standard, idiomatic Python 3 code
  that then runs similarly on Python 2.6/2.7 and Python 3.3+."
 
@@ -165,7 +170,7 @@ the top of a file (if you are working at a prompt, you just need to
 import it before you want to use the functionality).
 
 ``` {.sourceCode .bash}
-cat test.py
+cat test.py  # special IPython functionality to call the operating system
 ```
 
 ``` {.sourceCode .python}
@@ -269,7 +274,7 @@ Docstrings are an important part of Python. A docstring is a character string th
 **Exercises**
 
 -   What happens if you type `np.ndim??` (i.e., use two question marks)?
--   What does `ndim()` do? How does it execute under the hood?
+-   What does `np.ndim()` do? How does it execute under the hood?
     Consider why the following uses of *ndim* both work.
 ``` {.sourceCode .python}
 a = np.array([0, 1, 2])
@@ -336,16 +341,6 @@ x ** 2
 y = 1+2j
 ```
 
-Note that even these basic data structures behave like objects. We can use tab completion to see what methods are available for an object.
-
-``` {.sourceCode .python}
-x.
-# x.as_integer_ratio  x.hex               x.real
-# x.conjugate         x.imag              
-# x.fromhex           x.is_integer        
-
-# Which of those are attributes ('member data') and which are methods ('member functions')?
-```
 
 We can apply various functions to numbers, as expected.
 ``` {.sourceCode .python}
@@ -376,6 +371,9 @@ math.cos        math.fmod       math.log1p
 math.cosh       math.frexp      math.modf
 ```
 
+
+
+
 **Exercises**
 
 - Using the section on "Built-in Types" from the [official "The Python
@@ -392,6 +390,24 @@ Standard Library" reference](https://docs.python.org/2/library/index.html), figu
 100000**100
 100000.0**100
 ```
+
+Objects and object-oriented programming
+---------------------------------------
+
+We'll talk about this in more detail later, but it's worth mentioning here that Python is an object-oriented language.  What this means is that variables in Python are objects that are instances of a class.
+
+Objects have methods that can be used on them and attributes (member data) that are part of the object. All objects in a class have the same methods and same member data 'slots', but different objects will have different values in those slots.
+
+Note that even the basic numeric structures behave like objects. We can use tab completion to see what methods are available for an object and what member data are part of an object.
+
+``` {.sourceCode .python}
+x.
+# x.as_integer_ratio  x.hex               x.real
+# x.conjugate         x.imag              
+# x.fromhex           x.is_integer        
+```
+
+Which of those are attributes/metadata ('member data') and which are methods ('member functions')? If it's a method, say `foo`, you can run the method as `x.foo()`. If it's member data, you can see its value with `x.foo`. 
 
 Strings
 -------
@@ -427,9 +443,11 @@ we can demonstrate with strings.
     step, which you specify using the `start:stop:step` notation inside
     of square braces.
 
-    ``` {.sourceCode .python}    
+    ``` {.sourceCode .python}
+    string.digits[1:5:2]
     string.digits[1::2]
     string.digits[:5:-1]
+    string.digits[1:5:-1]
     string.digits[-3:-7:-1]
     ```
 
@@ -502,7 +520,7 @@ string1.__init__          string1.__subclasshook__
 
 **Exercises**
 
-- Using this string: `x = 'The ant wants what all ants want.'`, solve the following string manipulation problems using string indexing, slicing, subsequence testing, and methods
+- Using this string: `x = 'The ant wants what all ants want.'`, solve the following string manipulation problems using string indexing, slicing, methods, and subsequence testing:
     1.  Convert the string to all lower case letters (don’t change x).
     2.  Count the number of occurrences of the substring `ant`.
     3.  Create a list of the words occurring in `x`. Make sure to remove
@@ -527,6 +545,9 @@ Python often return tuples.
 x = 1; y = 'foo'
 
 xy = (x, y)
+type(xy)
+xy = x,y
+type(xy)
 
 xy
 xy[1]
@@ -564,6 +585,10 @@ dice*2
 dice+dice[::-1]
 
 1 in dice
+
+dice.extend(dice)
+dice.append(dice)
+
 ```
 
 **Exercises**
@@ -571,8 +596,7 @@ dice+dice[::-1]
 -  Create a list of numbers. Reverse the order of the items in the list
     using slicing. Now reverse the order of the items using a list
     method. How does using the method differ from slicing? 
-- Do you think
-    you think tuples have a method to reverse the order of its items?
+- Do you think tuples have a method to reverse the order of its items?
     Why or why not? Check to see if you are correct or not.
 -  Using a list method sort your numbers. Create a list of strings and
     sort it. 
@@ -727,7 +751,10 @@ y = [-4, 3, -1, 2.5, 7]
 import string
 letters = string.ascii_lowercase
 
-[l[1] for l in enumerate(letters) if l[0] > 13] 
+# concise but terse:
+[l[1] for l in enumerate(letters) if l[0] > 13]
+# better style:
+[letter for index, letter in enumerate(letters) if index > 13]
 
 x = zip(['clinton', 'bush', 'obama', 'trump'], ['D', 'R', 'D', 'R'])
 for pres,party in x:
@@ -739,7 +766,7 @@ for pres,party in x:
 
 - See what `[1, 2, 3] + 3` returns. Try to explain what happened and why.
 - Use list comprehension to perform element-wise addition of a scalar to a list of scalars.
-- How would you do the same task using a for loop?
+- How would you do the same task using a for loop? The `range` function may be helpful as might the `enumerate` function.
 - Use a for loop to iterate through the elements of a zip object and determine the type of the individual elements. 
 
 
@@ -751,7 +778,7 @@ Functions
 Here's an example that illustrates both positional arguments (always first) and named arguments.
 
 ``` {.sourceCode .python}
-def add(x, y=1, absol = False):
+def add(x, y=1, absol=False):
     if absol:
         return(abs(x+y))
     else:
@@ -760,15 +787,15 @@ def add(x, y=1, absol = False):
 add(3)
 add(3, 5)
 
-add(3, absol = True, y = -5)
+add(3, absol=True, y=-5)
 
-add(y = -5, x = 3)
-add(y = -5, 3)
+add(y=-5, x=3)
+add(y=-5, 3)
 ```
 
 **Exercises**
 
-- Define a function that will take the sqrt of a number if it is bigger than 0 or set it to 0 otherwise.
+- Define a function that will take the sqrt of a number and will (if requested by the user) set the square root of a negative number to 0.
 - Now use the function in a list comprehension to operate on a list of numbers.
 - What happens if you modify a list within a function in Python; why do you think this is?
 - What happens if you modify a single number (scalar) within a function in Python; why do you think this is?
@@ -812,7 +839,7 @@ y
 ```
 
 Note that `cat` is not a Python statement. IPython is clever enough to
-quess that you want it to call out to the underlying operating system.
+guess that you want it to call out to the underlying operating system.
 
 **Exercise**
 
@@ -844,7 +871,7 @@ os
 import os
 
 os.getcwd()
-pwd
+pwd           # IPython operating system call
 ```
 
 **Exercise**
@@ -898,7 +925,7 @@ Here we'll use some of those functions in addition to some syntax for subsetting
 np.linspace(0, 1, 5)
 
 np.random.seed(0)
-x = np.random.normal(size = 10)
+x = np.random.normal(size=10)
 
 pos = x > 0
 
@@ -944,7 +971,7 @@ dat[0:5]
 
 dat.sort_values(['year', 'country'])
 
-dat.loc[0:5, ['year', 'country']]
+dat.loc[0:5, ['year', 'country']]  # R-style indexing
 
 dat[dat.year == 1952]
 
@@ -955,9 +982,9 @@ ndat.apply(lambda col: col.max() - col.min())
 Now let's see the sort of split-apply-combine functionality that is popular in dplyr and related R packages.
 
 ``` {.sourceCode .python}
-dat2007 = dat[dat.year == 2007].copy()
+dat2007 = dat[dat.year == 2007].copy()  # .copy() ensures a copy is made
 
-dat2007.groupby('continent').mean()
+dat2007.groupby('continent', as_index=False).mean()
 
 def stdize(vals):
     return((vals - vals.mean()) / vals.std())
@@ -968,7 +995,7 @@ dat2007['lifeExpZ'] = dat2007.groupby('continent')['lifeExp'].transform(stdize)
 **Exercise**
 
 - Use *pd.merge()* to merge the continent means for life expectancy for 2007 back into the original *dat2007* dataFrame.
-- Explore the pandas documentation to see if  there is a way to add the continent means as a column without an explicit merge (i.e., mimicing capability built into dply)?
+- Explore the pandas documentation to see if  there is a way to add the continent means as a column without an explicit merge (i.e., mimicing capability built into dplyr)?
 
 Matplotlib
 ---------------
