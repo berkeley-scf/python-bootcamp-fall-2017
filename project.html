@@ -73,23 +73,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>Write a function, called <em>tokenize</em>, which takes a tweet, cleans it, and removes all punctuation and stopwords.</p></li>
 <li><p>Create a list of lists, tweets_content, using your <em>tokenize</em> function.</p></li>
 <li><p>Create a list, <em>tokens</em>, where all 200 of each senator's tweets are made into a single string.</p></li>
+<li><p>Create a Pandas dataFrame with the following columns: senator name or handle, party of the senator, and number of times a prominent politician is mentioned in each senator's tweets. You might count the number of 'Obama', 'Trump', or 'Clinton' references.</p>
+<p>You can use this to create the party column (1=Republican, 0=Democratic):</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">party</span> = np.array([1,1,1,1,1,1,0,0,1,0,1,1,0,0,0,1,1,1,0,0,0,1,1,1,1,0,1,0,
+<span class="kw">1</span>,1,1,0,0,0,0,0,0,1,0,1,1,1,0,1,1,1,0,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,0,1,
+<span class="kw">1</span>,0,0,0,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,1,1,0,0,1,0,1,0,0,1,1,1,0,1])</code></pre></div>
+<p>That should correspond to the ordering in <code>timelines</code> but of course it would be more robust to create a dataFrame that has user names and party as columns and merge that with the count information.</p></li>
+<li><p>Use a Poisson GLM to assess the relationship between party and number of Obama/Trump/Clinton mentions. Does one party tend to mention Obama/Trump/Clinton more in their tweets? Can you deduce a pattern by considering the party of the senator and the party of Obama/Trump/Clinton?</p>
+<p>Here's some syntax to help you get started:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">import</span> statsmodels.api as sm
+<span class="kw">model</span> = sm.GLM(endog = .,  exog = ., family = sm.families.Poisson())
+<span class="kw">model.fit</span>()</code></pre></div>
+<p>Does the statistical result make sense in light of the number of total mentions of Obama/Trump/Clinton by Republicans and the number of total mentions by Democrats?</p></li>
+<li><p>Use <em>matplotlib</em> to make histograms of the number of Obama mentions by senator, stratified by party.</p>
+<p>Is this consistent with the results of your statistical analysis?</p></li>
 </ol>
-<p>12.) Create a Pandas dataFrame with the following columns: senator name or handle, party of the senator, and number of times a prominent politician is mentioned in each senator's tweets. You might count the number of 'Obama', 'Trump', or 'Clinton' references.</p>
-<pre><code>You can use this to create the party column (1=Republican, 0=Democratic):
-``` {.sourceCode .bash}
-party = np.array([1,1,1,1,1,1,0,0,1,0,1,1,0,0,0,1,1,1,0,0,0,1,1,1,1,0,1,0,1,1,1,0,0,0,0,0,0,1,0,1,1,1,0,1,1,1,0,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,0,1,1,0,0,0,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,1,1,0,0,1,0,1,0,0,1,1,1,0,1])
-```</code></pre>
-<p>That should correspond to the ordering in <code>timelines</code> but of course it would be more robust to create a dataFrame that has user names and party as columns and merge that with the count information.</p>
-<p>13.) Use a Poisson GLM to assess the relationship between party and number of Obama/Trump/Clinton mentions. Does one party tend to mention Obama/Trump/Clinton more in their tweets? Can you deduce a pattern by considering the party of the senator and the party of Obama/Trump/Clinton?</p>
-<pre><code>Here&#39;s some syntax to help you get started:
-``` {.sourceCode .bash}
-import statsmodels.api as sm
-model = sm.GLM(endog = .,  exog = ., family = sm.families.Poisson())
-model.fit()
-```
-
-Does the statistical result make sense in light of the number of total mentions of Obama/Trump/Clinton by Republicans and the number of total mentions by Democrats?</code></pre>
-<p>14.) Use <em>matplotlib</em> to make histograms of the number of Obama mentions by senator, stratified by party.</p>
-<pre><code>Is this consistent with the results of your statistical analysis?</code></pre>
 </body>
 </html>

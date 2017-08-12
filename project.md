@@ -49,16 +49,18 @@ Make sure to pull the data into Python by writing Python code to download and su
 
 11. Create a list, *tokens*, where all 200 of each senator's tweets are made into a single string.
 
-12.) Create a Pandas dataFrame with the following columns: senator name or handle, party of the senator, and number of times a prominent politician is mentioned in each senator's tweets. You might count the number of 'Obama', 'Trump', or 'Clinton' references.
+12. Create a Pandas dataFrame with the following columns: senator name or handle, party of the senator, and number of times a prominent politician is mentioned in each senator's tweets. You might count the number of 'Obama', 'Trump', or 'Clinton' references.
 
     You can use this to create the party column (1=Republican, 0=Democratic):
     ``` {.sourceCode .bash}
-    party = np.array([1,1,1,1,1,1,0,0,1,0,1,1,0,0,0,1,1,1,0,0,0,1,1,1,1,0,1,0,1,1,1,0,0,0,0,0,0,1,0,1,1,1,0,1,1,1,0,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,0,1,1,0,0,0,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,1,1,0,0,1,0,1,0,0,1,1,1,0,1])
+    party = np.array([1,1,1,1,1,1,0,0,1,0,1,1,0,0,0,1,1,1,0,0,0,1,1,1,1,0,1,0,
+    1,1,1,0,0,0,0,0,0,1,0,1,1,1,0,1,1,1,0,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,0,1,
+    1,0,0,0,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,1,1,0,0,1,0,1,0,0,1,1,1,0,1])
     ```
 
-That should correspond to the ordering in `timelines` but of course it would be more robust to create a dataFrame that has user names and party as columns and merge that with the count information. 
+    That should correspond to the ordering in `timelines` but of course it would be more robust to create a dataFrame that has user names and party as columns and merge that with the count information. 
 
-13.) Use a Poisson GLM to assess the relationship between party and number of Obama/Trump/Clinton mentions. Does one party tend to mention Obama/Trump/Clinton more in their tweets? Can you deduce a pattern by considering the party of the senator and the party of Obama/Trump/Clinton?
+13. Use a Poisson GLM to assess the relationship between party and number of Obama/Trump/Clinton mentions. Does one party tend to mention Obama/Trump/Clinton more in their tweets? Can you deduce a pattern by considering the party of the senator and the party of Obama/Trump/Clinton?
 
     Here's some syntax to help you get started:
     ``` {.sourceCode .bash}
@@ -69,7 +71,7 @@ That should correspond to the ordering in `timelines` but of course it would be 
 
     Does the statistical result make sense in light of the number of total mentions of Obama/Trump/Clinton by Republicans and the number of total mentions by Democrats?
 
-14.) Use *matplotlib* to make histograms of the number of Obama mentions by senator, stratified by party.
+14. Use *matplotlib* to make histograms of the number of Obama mentions by senator, stratified by party.
 
     Is this consistent with the results of your statistical analysis?
 
