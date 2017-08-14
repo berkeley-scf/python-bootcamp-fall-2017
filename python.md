@@ -587,7 +587,9 @@ dice+dice[::-1]
 1 in dice
 
 dice.extend(dice)
-dice.append(dice)
+dice2 = dice.copy()
+dice.append(dice2)
+# if use dice.append(dice) it embeds a pointer to itself 
 
 ```
 
@@ -757,6 +759,11 @@ letters = string.ascii_lowercase
 [letter for index, letter in enumerate(letters) if index > 13]
 
 x = zip(['clinton', 'bush', 'obama', 'trump'], ['D', 'R', 'D', 'R'])
+for pres,party in x:
+    print(pres, party)
+
+# note if we try to do the loop again, we get nothing, because
+# we have emptied the iterator when we loop through it
 for pres,party in x:
     print(pres, party)
 ```

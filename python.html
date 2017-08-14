@@ -410,7 +410,9 @@ dice<span class="op">+</span>dice[::<span class="op">-</span><span class="dv">1<
 <span class="dv">1</span> <span class="op">in</span> dice
 
 dice.extend(dice)
-dice.append(dice)</code></pre></div>
+dice2 <span class="op">=</span> dice.copy()
+dice.append(dice2)
+<span class="co"># if use dice.append(dice) it embeds a pointer to itself </span></code></pre></div>
 <p><strong>Exercises</strong></p>
 <ul>
 <li>Create a list of numbers. Reverse the order of the items in the list using slicing. Now reverse the order of the items using a list method. How does using the method differ from slicing?</li>
@@ -526,6 +528,11 @@ letters <span class="op">=</span> string.ascii_lowercase
 [letter <span class="cf">for</span> index, letter <span class="op">in</span> <span class="bu">enumerate</span>(letters) <span class="cf">if</span> index <span class="op">&gt;</span> <span class="dv">13</span>]
 
 x <span class="op">=</span> <span class="bu">zip</span>([<span class="st">&#39;clinton&#39;</span>, <span class="st">&#39;bush&#39;</span>, <span class="st">&#39;obama&#39;</span>, <span class="st">&#39;trump&#39;</span>], [<span class="st">&#39;D&#39;</span>, <span class="st">&#39;R&#39;</span>, <span class="st">&#39;D&#39;</span>, <span class="st">&#39;R&#39;</span>])
+<span class="cf">for</span> pres,party <span class="op">in</span> x:
+    <span class="bu">print</span>(pres, party)
+
+<span class="co"># note if we try to do the loop again, we get nothing, because</span>
+<span class="co"># we have emptied the iterator when we loop through it</span>
 <span class="cf">for</span> pres,party <span class="op">in</span> x:
     <span class="bu">print</span>(pres, party)</code></pre></div>
 <p><strong>Exercises</strong></p>
