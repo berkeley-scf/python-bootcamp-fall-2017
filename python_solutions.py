@@ -154,3 +154,77 @@ with open("tmp.json", "w") as outfile:
     json.dump(data, outfile, indent=2)
 
           
+# numpy
+
+np.array([[1, 'a'], [2, 'b']])
+
+x = np.array([[1, 2], [3, 4]])
+y = np.array([1, 10])
+
+x+y
+
+x = np.random.normal(size = (10, 3))
+[np.var(x[:,i]) for i in range(x.shape[1])]
+
+# pandas
+
+tmp = dat2007.groupby('continent', as_index=False).mean()
+
+dat2007.merge(tmp[['continent', 'lifeExp']], left_on='continent',
+              right_on='continent') 
+
+
+# matplotlib
+
+%pylab # so plotting windows don't block access to IPython terminal session
+import matplotlib.pyplot as plt
+
+plt.scatter(dat2007.gdpPercap, dat2007.lifeExp)
+plt.ylabel('life expectancy')
+plt.xlabel('gdp per capita')
+plt.title('Does wealth lead to health?')
+
+plt.scatter(dat2007.gdpPercap, dat2007.lifeExp)
+plt.xscale('log')
+
+yrs = np.unique(dat.year)
+n = len(yrs)
+
+for i in range(n):
+    plt.subplot(2, np.ceil(n/2), i+1)
+    tmp = dat[dat.year == yrs[i]].copy()
+    plt.scatter(tmp.gdpPercap, tmp.lifeExp)
+    plt.xscale('log')
+    plt.title(yrs[i])
+    
+    
+conts = np.unique(dat['continent'])
+colors = ['b','g','r','c','m']
+# plt.cm.rainbow(np.linspace(0,1,n))
+# ['blue','green','red','cyan','magenta','yellow','black']
+colscheme = dict(zip(conts, colors))
+col = [colscheme[cont] for cont in dat2007['continent']]
+
+plt.scatter(dat2007['gdpPercap'], dat2007['lifeExp'], marker='o', c=col)
+plt.show()
+
+# hard to do a legend though...
+
+# here's a different approach
+conts = np.unique(dat['continent'])
+colors = ['b','g','r','c','m']
+for (i,cont) in enumerate(conts):
+    tmp = dat2007[dat2007.continent == cont]
+    plt.scatter(tmp['gdpPercap'], tmp['lifeExp'], marker='o', c=colors[i])
+    plt.xscale('log')
+plt.legend(loc=4, scatterpoints=1, labels = conts)
+
+dat2007[(dat2007.lifeExp < 72) & (dat2007.gdpPercap > 10000)]
+trinidad = dat2007[dat2007.country == 'Trinidad and Tobago']
+
+for (i,cont) in enumerate(conts):
+    tmp = dat2007[dat2007.continent == cont]
+    plt.scatter(tmp['gdpPercap'], tmp['lifeExp'], marker='o', c=colors[i])
+    plt.xscale('log')
+plt.legend(loc=4, scatterpoints=1, labels = conts)
+plt.annotate('Trinidad', xy=(trinidad.gdpPercap, trinidad.lifeExp))
