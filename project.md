@@ -5,6 +5,10 @@ title: Python bootcamp project
 Background
 ============
 
+The goal of the project is to analyze the tweeting behavior of the 100 US Senators in the US Senate. Each senator has a Twitter account and puts out tweets reflecting their thought and communicating with the people in the state they represent.
+
+The goal of the project questions is to guide you through the steps of getting the data, processing and cleaning it, putting it in a format that makes it easier to analyze and then doing some basic analysis. The last few questions ask you to see if whether a senator mentions a president or presidential candidate depends on the party that the senator is part of. For example, do Democratic senators mention Barack Obama in their tweets more or less than Republican senators? 
+
 The file **fetch_senator_tweets.py** downloads tweets using the Python twitter package to interact with Twitter's API. You will only be able to run that code if you set up your own Twitter account and follow the instructions at the start of the file regarding filling in the authentication information (CONSUMER_KEY, CONSUMER_SECRET, etc.).
 
 I've already run the code and downloaded the data for you.  The downloaded information on the senators' twitter accounts is in *senators-list.json*, while the downloaded tweets are in *timelines.json*. Note that there are only 200 tweets for each senator because of limits on how many tweets can be accessed in a given request. *timelines.json* is too big to put in the Github repository. You can find it at <http://www.stat.berkeley.edu/~paciorek/transfer/timelines.json>.
