@@ -19,8 +19,12 @@ x.lower()
 x.count('ant')
 
 tmp = x.lower()
-tmp = tmp.strip(string.punctuation)
+tmp = tmp.strip(string.punctuation) # only removes from beginning/end of string
 tmp.split()
+
+# alternatively:
+for punct in string.punctuation:
+    tmp = tmp.replace(punct, '')
 
 ## the object-oriented way -- composition of operations
 x.lower().strip(' .').split()
