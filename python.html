@@ -691,7 +691,7 @@ dat[dat.year <span class="op">==</span> <span class="dv">1952</span>]
 ndat <span class="op">=</span> dat[[<span class="st">&#39;pop&#39;</span>,<span class="st">&#39;lifeExp&#39;</span>,<span class="st">&#39;gdpPercap&#39;</span>]]
 ndat.<span class="bu">apply</span>(<span class="kw">lambda</span> col: col.<span class="bu">max</span>() <span class="op">-</span> col.<span class="bu">min</span>())</code></pre></div>
 <p>Now let's see the sort of split-apply-combine functionality that is popular in dplyr and related R packages.</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">dat2007 <span class="op">=</span> dat[dat.year <span class="op">==</span> <span class="dv">2007</span>].copy()  <span class="co"># .copy() ensures a copy is made</span>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">dat2007 <span class="op">=</span> dat[dat.year <span class="op">==</span> <span class="dv">2007</span>].copy()  <span class="co"># .copy() ensures a (shallow) copy is made</span>
 
 dat2007.groupby(<span class="st">&#39;continent&#39;</span>, as_index<span class="op">=</span><span class="va">False</span>).mean()
 

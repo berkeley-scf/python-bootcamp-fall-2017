@@ -989,7 +989,7 @@ ndat.apply(lambda col: col.max() - col.min())
 Now let's see the sort of split-apply-combine functionality that is popular in dplyr and related R packages.
 
 ``` {.sourceCode .python}
-dat2007 = dat[dat.year == 2007].copy()  # .copy() ensures a copy is made
+dat2007 = dat[dat.year == 2007].copy()  # .copy() ensures a (shallow) copy is made
 
 dat2007.groupby('continent', as_index=False).mean()
 
